@@ -1,34 +1,21 @@
-import { useEffect, useState } from "react";
-import styles from './Clock.module.css';
+import styles from "./Clock.module.css";
+import { useCurrentClockTime } from "../../ClockTimeContext";
 
 type Props = {
   timeZone: string;
 };
 
-const formatTime = (time: Date): string => {
-  const hours = String(time.getHours()).padStart(2, '0');
-  const minutes = String(time.getMinutes()).padStart(2, '0');
-  const seconds = String(time.getSeconds()).padStart(2, '0');
+const formatTime = (time: Date, timeZone: string): string => {
+  const timeInTimeZone = new Date(time.toLocaleString("en-US", { timeZone }))
+  const hours = String(timeInTimeZone.getHours()).padStart(2, '0');
+  const minutes = String(timeInTimeZone.getMinutes()).padStart(2, '0');
+  const seconds = String(timeInTimeZone.getSeconds()).padStart(2, '0');
 
   return `${hours}:${minutes}:${seconds}`;
 }
 
 export const Clock = ({ timeZone }: Props) => {
-  const [time, setTime] = useState(new Date(new Date().toLocaleString("en-US", { timeZone })));
+  const time = useCurrentClockTime();
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTime((prevDate) => {
-        const newDate = new Date(prevDate);
-        newDate.setSeconds(prevDate.getSeconds() + 1);
-        return newDate;
-      });
-    }, 1000);
-
-    return () => {
-      clearInterval(interval);
-    }
-  }, []);
-
-  return <span className={styles.container}>{formatTime(time)}</span>;
+  return <span className={styles.container}>{formatTime(time, timeZone)}</span>;
 }
