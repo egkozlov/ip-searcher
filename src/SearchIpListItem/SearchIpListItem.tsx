@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useSearchIpLocation } from "./useSearchIpLocation";
 import { isIpValid } from "./ip.validation.util";
+import { Clock } from "./components/Clock";
 
 export const SearchIpListItem = () => {
   const [value, setValue] = useState('');
   const [error, setError] = useState('');
-  const { isLoading, country, searchIpLocation } = useSearchIpLocation();
+  const { isLoading, country, searchIpLocation, locationCurrentTime } = useSearchIpLocation();
 
   const handleOnChange = (event: any) => {
     setValue(event.target.value);
@@ -39,7 +40,7 @@ export const SearchIpListItem = () => {
         onBlur={handleOnBlur}
         disabled={isLoading}
       />
-      {isLoading ? 'loading' : country}
+      {isLoading ? 'loading' : <div>{country} {locationCurrentTime ? <Clock initialTime={locationCurrentTime} /> : null} </div>}
     </div>
     {error ? <span style={{ color: 'red' }}>{error}</span> : null}
   </li>;
