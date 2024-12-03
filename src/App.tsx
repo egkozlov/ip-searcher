@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./App.module.css";
-import { SearchItem } from "./SearchItem";
+import { SearchIpListItem } from "./SearchIpListItem";
 
 export const App = () => {
   const [itemsToSearch, setItemsToSearch] = useState([{}]);
@@ -13,7 +13,7 @@ export const App = () => {
     <div className={styles.dialog}>
       <button onClick={handleAddNewRow}>Add</button>
       <ol>
-        {itemsToSearch.map(() => <SearchItem />)}
+        {itemsToSearch.map(() => <SearchIpListItem />)}
       </ol>
     </div>
   </div>;
