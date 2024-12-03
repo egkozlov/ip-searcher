@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  width: 100%;
+}
+
+.input {
+  border: 1px solid rgb(228, 228, 231);
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: rgb(9, 9, 11);
+  font-size: 14px;
+  font-weight: 400;
+  height: 40px;
+  line-height: 20px;
+  min-width: 40px;
+  outline-color: #00A1C9;
+  padding: 12px;
+  width: 100%;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.errorMessage {
+  color: #D0021B;
+  font-size: 14px;
+  margin: 0;
+}

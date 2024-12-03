@@ -1,31 +1,29 @@
 import { useCallback, useState } from "react";
 import { searchGeolocationData } from "../ip.service";
 
-type GeolocationData = {
+export type GeolocationData = {
   countryFlag: string;
   timeZone: string;
 };
 
 export const useSearchIpGeolocationData = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [geolocationData, setGeolocationData] = useState<GeolocationData | null>(null);
 
-  const searchIpGeolocation = useCallback(async (ip: string) => {
+  const searchIpGeolocation = useCallback(async (ip: string): Promise<GeolocationData> => {
     setIsLoading(true);
 
     try {
       const result = await searchGeolocationData(ip);
-      setGeolocationData({
+      return {
         countryFlag: result.country_flag,
         timeZone: result.time_zone.name,
-      });
+      };
     } catch (err) {
-      setGeolocationData(null);
       throw err;
     } finally {
       setIsLoading(false);
     }
   }, []);
 
-  return { geolocationData, isLoading, searchIpGeolocation };
+  return { isLoading, searchIpGeolocation };
 };

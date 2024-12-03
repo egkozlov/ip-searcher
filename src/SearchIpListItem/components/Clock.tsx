@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
+import styles from './Clock.module.css';
 
 type Props = {
   timeZone: string;
@@ -29,5 +30,5 @@ export const Clock = ({ timeZone }: Props) => {
     }
   }, []);
 
-  return <span>{formatTime(time)}</span>;
+  return <span className={styles.container}>{formatTime(time)}</span>;
 }

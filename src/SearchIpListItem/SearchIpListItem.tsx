@@ -1,12 +1,16 @@
 import { useState } from "react";
-import { useSearchIpGeolocationData } from "./useSearchIpGeolocationData";
+import { GeolocationData, useSearchIpGeolocationData } from "./useSearchIpGeolocationData";
 import { isIpValid } from "./ip.validation.util";
 import { Clock } from "./components/Clock";
+import { TextInput } from "../TextInput/TextInput";
+import styles from './SearchIpListItem.module.css';
+import { Spinner } from "../Spinner/Spinner";
 
 export const SearchIpListItem = () => {
   const [value, setValue] = useState('');
   const [error, setError] = useState('');
-  const { isLoading, geolocationData, searchIpGeolocation } = useSearchIpGeolocationData();
+  const [geolocationData, setGeolocationData] = useState<GeolocationData | null>(null);
+  const { isLoading, searchIpGeolocation } = useSearchIpGeolocationData();
 
   const handleOnChange = (event: any) => {
     setValue(event.target.value);
@@ -14,6 +18,7 @@ export const SearchIpListItem = () => {
 
   const handleOnBlur = async () => {
     setError('');
+    setGeolocationData(null);
 
     if (!value) {
       setError('Value is required');
@@ -26,25 +31,28 @@ export const SearchIpListItem = () => {
     }
 
     try {
-      await searchIpGeolocation(value);
+      const result = await searchIpGeolocation(value);
+      setGeolocationData(result);
     } catch (err) {
       setError('Sorry, something went wrong. Try again later');
     }
   }
 
-  return <li>
-    <div>
-      <input
+  return <li className={styles.listItem}>
+    <div className={styles.container}>
+      <TextInput
         value={value}
         onChange={handleOnChange}
         onBlur={handleOnBlur}
         disabled={isLoading}
+        errorMessage={error}
       />
-      {isLoading ? 'loading' : <div>{geolocationData ? <>
-        <img src={geolocationData.countryFlag} alt="counry flag" />
-        <Clock timeZone={geolocationData.timeZone} />
-      </> : null}</div>}
+      <div className={styles.statusContainer}>
+        {isLoading ? <Spinner /> : <div className={styles.geolocationDataContainer}>{geolocationData ? <>
+          <img className={styles.flag} src={geolocationData.countryFlag} alt="counry flag" />
+          <Clock timeZone={geolocationData.timeZone} />
+        </> : null}</div>}
+      </div>
     </div>
-    {error ? <span style={{ color: 'red' }}>{error}</span> : null}
   </li>;
 }
