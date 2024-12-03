@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { useSearchIpLocation } from "./useSearchIpLocation";
+import { useSearchIpGeolocationData } from "./useSearchIpGeolocationData";
 import { isIpValid } from "./ip.validation.util";
 import { Clock } from "./components/Clock";
 
 export const SearchIpListItem = () => {
   const [value, setValue] = useState('');
   const [error, setError] = useState('');
-  const { isLoading, country, searchIpLocation, locationCurrentTime } = useSearchIpLocation();
+  const { isLoading, geolocationData, searchIpGeolocation } = useSearchIpGeolocationData();
 
   const handleOnChange = (event: any) => {
     setValue(event.target.value);
@@ -26,7 +26,7 @@ export const SearchIpListItem = () => {
     }
 
     try {
-      await searchIpLocation(value);
+      await searchIpGeolocation(value);
     } catch (err) {
       setError('Sorry, something went wrong. Try again later');
     }
@@ -40,7 +40,10 @@ export const SearchIpListItem = () => {
         onBlur={handleOnBlur}
         disabled={isLoading}
       />
-      {isLoading ? 'loading' : <div>{country} {locationCurrentTime ? <Clock initialTime={locationCurrentTime} /> : null} </div>}
+      {isLoading ? 'loading' : <div>{geolocationData ? <>
+        <img src={geolocationData.countryFlag} alt="counry flag" />
+        <Clock timeZone={geolocationData.timeZone} />
+      </> : null}</div>}
     </div>
     {error ? <span style={{ color: 'red' }}>{error}</span> : null}
   </li>;

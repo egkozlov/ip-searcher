@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 
 type Props = {
-  initialTime: Date;
+  timeZone: string;
 };
 
 const formatTime = (time: Date): string => {
@@ -12,8 +12,8 @@ const formatTime = (time: Date): string => {
   return `${hours}:${minutes}:${seconds}`;
 }
 
-export const Clock = ({ initialTime }: Props) => {
-  const [time, setTime] = useState(initialTime);
+export const Clock = ({ timeZone }: Props) => {
+  const [time, setTime] = useState(new Date(new Date().toLocaleString("en-US", { timeZone })));
 
   useEffect(() => {
     const interval = setInterval(() => {
