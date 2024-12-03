@@ -1,3 +1,23 @@
+export const validateIp = (ip: string) => {
+  if (!ip) {
+    return {
+      isValid: false,
+      errorMessage: 'Value is required'
+    };
+  }
+
+  if (!isIpFormatValid(ip)) {
+    return {
+      isValid: false,
+      errorMessage: 'IP is invalid'
+    };
+  }
+
+  return {
+    isValid: true
+  };
+}
+
 const v4 = '(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)(?:\\.(?:25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]\\d|\\d)){3}';
 
 const v6segment = '[a-fA-F\\d]{1,4}';
@@ -16,6 +36,6 @@ const v6 = `
 
 const v46Exact = new RegExp(`(?:^${v4}$)|(?:^${v6}$)`);
 
-export const isIpValid = (ip: string) => {
+const isIpFormatValid = (ip: string) => {
   return v46Exact.test(ip);
 }

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { GeolocationData, useSearchIpGeolocationData } from "./useSearchIpGeolocationData";
-import { isIpValid } from "./ip.validation.util";
+import { validateIp } from "./ip.validation.util";
 import { Clock } from "./components/Clock";
 import { TextInput } from "../TextInput/TextInput";
 import styles from './SearchIpListItem.module.css';
@@ -26,13 +26,9 @@ export const SearchIpListItem = () => {
     setError('');
     setGeolocationData(null);
 
-    if (!value) {
-      setError('Value is required');
-      return;
-    }
-
-    if (!isIpValid(value)) {
-      setError('Ip is invalid');
+    const validationResult = validateIp(value);
+    if(!validationResult.isValid){
+      setError(validationResult.errorMessage || '');
       return;
     }
 
