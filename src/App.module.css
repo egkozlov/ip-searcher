@@ -1,0 +1,10 @@
+.mainContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.dialog {
+  width: 400px;
+}
