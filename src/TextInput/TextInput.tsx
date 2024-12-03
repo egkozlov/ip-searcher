@@ -1,7 +1,7 @@
 import styles from "./TextInput.module.css";
 
 type Props = {
-  errorMessage?: string;
+  errorMessage?: string | null;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 export const TextInput = (props: Props) => {

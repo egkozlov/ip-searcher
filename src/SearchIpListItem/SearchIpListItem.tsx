@@ -8,8 +8,9 @@ import { Spinner } from "../Spinner/Spinner";
 
 export const SearchIpListItem = () => {
   const [value, setValue] = useState('');
-  const [error, setError] = useState('');
+  const [error, setError] = useState<string | null>(null);
   const [geolocationData, setGeolocationData] = useState<GeolocationData | null>(null);
+  const [previouslySearchedValue, setPreviouslySearchedValue] = useState<string | null>(null);
   const { isLoading, searchIpGeolocation } = useSearchIpGeolocationData();
 
   const handleOnChange = (event: any) => {
@@ -17,6 +18,11 @@ export const SearchIpListItem = () => {
   }
 
   const handleOnBlur = async () => {
+    if (previouslySearchedValue === value) {
+      return;
+    }
+
+    setPreviouslySearchedValue(value);
     setError('');
     setGeolocationData(null);
 
