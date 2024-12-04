@@ -1,0 +1,36 @@
+.content {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  button {
+    width: fit-content;
+  }
+}
+
+.list {
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+  list-style: none;
+  counter-reset: list-counter;
+  padding-left: 0;
+  margin: 0;
+}
+
+.plusIcon {
+  width: 12px;
+  height: 12px;
+  margin-right: 8px;
+}
+
+.separator {
+  height: 1px;
+  width: 100%;
+  background-color: black;
+}
+
+.description {
+  margin: 0;
+}

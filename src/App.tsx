@@ -1,24 +1,24 @@
 import { useState } from "react";
 import styles from "./App.module.css";
-import { SearchIpListItem } from "./SearchIpListItem";
+import { SearchIpGeolocationModal } from "./SearchIpGeolocationModal";
 import { Button } from "./Button/Button";
-import { ReactComponent as PlusIcon } from './plus.svg';
 
 export const App = () => {
-  const [itemsToSearch, setItemsToSearch] = useState([{}]);
+  const [isIpGeolocationModalOpened, setIsIpGeolocationModalOpened] = useState(false);
 
-  const handleAddNewRow = () => {
-    setItemsToSearch([...itemsToSearch, {}]);
-  };
+  const handleOpenModal = () => {
+    setIsIpGeolocationModalOpened(true);
+  }
+
+  const handleOnCloseModal = () => {
+    setIsIpGeolocationModalOpened(false);
+  }
 
   return <div className={styles.mainContainer}>
-    <div className={styles.dialog}>
-      <Button onClick={handleAddNewRow}>
-        <PlusIcon className={styles.plusIcon} /> Add
-      </Button>
-      <ol className={styles.ipSearchList}>
-        {itemsToSearch.map(() => <SearchIpListItem />)}
-      </ol>
-    </div>
+    <Button onClick={handleOpenModal}>Open modal</Button>
+    <SearchIpGeolocationModal
+      isOpen={isIpGeolocationModalOpened}
+      onClose={handleOnCloseModal}
+    />
   </div>;
 };

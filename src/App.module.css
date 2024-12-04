@@ -4,21 +4,3 @@
   justify-content: center;
   margin-top: 40px;
 }
-
-.dialog {
-  width: 600px;
-}
-
-.ipSearchList {
-  display: flex;
-  gap: 12px;
-  flex-direction: column;
-  list-style: none;
-  counter-reset: list-counter;
-}
-
-.plusIcon {
-  width: 12px;
-  height: 12px;
-  margin-right: 8px;
-}
