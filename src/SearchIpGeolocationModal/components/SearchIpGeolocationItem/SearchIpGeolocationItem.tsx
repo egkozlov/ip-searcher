@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { GeolocationData, useSearchIpGeolocationData } from "./useSearchIpGeolocationData";
-import { validateIp } from "./ip.validation.util";
-import { Clock } from "./components/Clock";
-import { TextInput, Spinner } from "../common";
-import styles from './SearchIpListItem.module.css';
+import { GeolocationData, useSearchIpGeolocationData } from "./hooks/useSearchIpGeolocationData";
+import { validateIp } from "./utils/ip.validation.util";
+import { Clock } from "../Clock";
+import { TextInput, Spinner } from "../../../common";
+import styles from './SearchIpGeolocationItem.module.css';
 
-export const SearchIpListItem = () => {
+export const SearchIpGeolocationItem = () => {
   const [value, setValue] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [geolocationData, setGeolocationData] = useState<GeolocationData | null>(null);
@@ -26,7 +26,7 @@ export const SearchIpListItem = () => {
     setGeolocationData(null);
 
     const validationResult = validateIp(value);
-    if(!validationResult.isValid){
+    if (!validationResult.isValid) {
       setError(validationResult.errorMessage || '');
       return;
     }

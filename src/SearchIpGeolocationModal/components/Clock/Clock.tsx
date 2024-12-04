@@ -1,5 +1,5 @@
 import styles from "./Clock.module.css";
-import { useCurrentClockTime } from "../../ClockTimeContext";
+import { useCurrentClockTime } from "../../../ClockTimeContext";
 
 type Props = {
   timeZone: string;

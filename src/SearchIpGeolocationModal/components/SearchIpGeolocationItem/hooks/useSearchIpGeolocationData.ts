@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { searchGeolocationData } from "../ip.service";
+import { searchGeolocationData } from "../../../../ip.service";
 
 export type GeolocationData = {
   countryFlag: string;

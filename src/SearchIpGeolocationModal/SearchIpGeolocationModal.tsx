@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { SearchIpListItem } from '../SearchIpListItem';
 import styles from './SearchIpGeolocationModal.module.css';
-import { ReactComponent as PlusIcon } from '../plus.svg';
+import { ReactComponent as PlusIcon } from '../assets/plus.svg';
 import { Modal, Button } from '../common';
+import { SearchIpGeolocationItem } from './components/SearchIpGeolocationItem';
 
 type Props = {
   isOpen: boolean;
@@ -39,7 +39,7 @@ export const SearchIpGeolocationModal = ({ isOpen, onClose }: Props) => {
       <div className={styles.separator} />
       <ol className={styles.list}>
         {Array.from(Array(textboxesCount).keys())
-          .map((value) => <SearchIpListItem key={value} />)
+          .map((value) => <SearchIpGeolocationItem key={value} />)
         }
       </ol>
     </div>

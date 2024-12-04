@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import { ReactComponent as CloseIcon } from "../close.svg";
+import { ReactComponent as CloseIcon } from "../../assets/close.svg";
 import styles from "./Modal.module.css";
 
 type Props = {
