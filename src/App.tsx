@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./App.module.css";
 import { SearchIpGeolocationModal } from "./SearchIpGeolocationModal";
-import { Button } from "./Button/Button";
+import { Button } from "./common";
 
 export const App = () => {
   const [isIpGeolocationModalOpened, setIsIpGeolocationModalOpened] = useState(false);

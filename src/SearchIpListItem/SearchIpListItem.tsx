@@ -2,9 +2,8 @@ import { useState } from "react";
 import { GeolocationData, useSearchIpGeolocationData } from "./useSearchIpGeolocationData";
 import { validateIp } from "./ip.validation.util";
 import { Clock } from "./components/Clock";
-import { TextInput } from "../TextInput/TextInput";
+import { TextInput, Spinner } from "../common";
 import styles from './SearchIpListItem.module.css';
-import { Spinner } from "../Spinner/Spinner";
 
 export const SearchIpListItem = () => {
   const [value, setValue] = useState('');
