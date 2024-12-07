@@ -15,7 +15,9 @@ export const App = () => {
   }
 
   return <div className={styles.mainContainer}>
-    <Button onClick={handleOpenModal}>Open modal</Button>
+    <h1 className={styles.title}>IP addresses geolocation finder</h1>
+    <p className={styles.description}>Quickly find the geographical location of one or multiple IP addresses, supporting both IPv4 and IPv6 formats. Click the 'Start search' button to begin entering IPs and discover their respective locations with ease.</p>
+    <Button onClick={handleOpenModal}>Start search</Button>
     <SearchIpGeolocationModal
       isOpen={isIpGeolocationModalOpened}
       onClose={handleOnCloseModal}

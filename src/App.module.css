@@ -1,6 +1,20 @@
 .mainContainer {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 40px;
+  margin: 40px auto;
+  padding: 16px;
+  max-width: 640px;
+}
+
+.title {
+  color: #212121;
+  text-align: center;
+}
+
+.description {  
+  color: #717173;
+  text-align: center;
+  margin-bottom: 40px;
 }
