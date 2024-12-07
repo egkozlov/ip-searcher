@@ -2,14 +2,14 @@ export const validateIp = (ip: string) => {
   if (!ip) {
     return {
       isValid: false,
-      errorMessage: 'Value is required'
+      errorMessage: 'Please enter an IP address.'
     };
   }
 
   if (!isIpFormatValid(ip)) {
     return {
       isValid: false,
-      errorMessage: 'IP is invalid'
+      errorMessage: 'Invalid IP address format. Please enter a valid IPv4 or IPv6 address.'
     };
   }
 
