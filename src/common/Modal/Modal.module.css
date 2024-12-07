@@ -1,13 +1,11 @@
 .modal {
-	min-width: 20rem;
 	border: 0;
 	padding: 0;
 	margin: 60px auto;
 	max-height: calc(100% - 2*60px);
-	min-height: 350px;
 	border-radius: 8px;
 	position: relative;
-	box-shadow: hsl(0 0% 0% / 10%) 0 0 0.5rem 0.25rem;
+	box-shadow: #0000001A 0px 0px 8px 4px;
 
 	@media only screen and (max-width: 640px) {
 		width: 100%;
@@ -23,12 +21,13 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid #212124;
 	padding: 20px;
 }
 
 .headerTitle {
 	margin: 0;
+	color: #212124;
 }
 
 .content {
@@ -37,7 +36,7 @@
 }
 
 .modal::backdrop {
-	background: hsl(0 0% 0% / 50%);
+	background: #00000080;
 }
 
 .modalCloseBtn {
