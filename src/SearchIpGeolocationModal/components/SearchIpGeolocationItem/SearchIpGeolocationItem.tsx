@@ -34,8 +34,12 @@ export const SearchIpGeolocationItem = () => {
     try {
       const result = await searchIpGeolocation(value);
       setGeolocationData(result);
-    } catch (err) {
-      setError('Sorry, something went wrong. Try again later');
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error && err.message
+        ? err.message
+        : 'Sorry, something went wrong';
+
+      setError(errorMessage);
     }
   }
 

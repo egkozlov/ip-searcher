@@ -12,6 +12,10 @@ type GeolocationAPIResponse = {
   }
 };
 
+type GeolocationAPIError = {
+  message: string;
+};
+
 const GEOLOCATION_API_KEY = process.env.REACT_APP_IP_GEOLOCATION_API_KEY;
 
 export const useSearchIpGeolocationData = () => {
@@ -27,14 +31,17 @@ export const useSearchIpGeolocationData = () => {
         fields: ['country_flag', 'time_zone'].join(',')
       });
       const response = await fetch(`https://api.ipgeolocation.io/ipgeo?${searchParams.toString()}`);
+      if (!response.ok) {
+        const error: GeolocationAPIError = await response.json();
+        throw new Error(error.message);
+      }
+
       const result: GeolocationAPIResponse = await response.json();
 
       return {
         countryFlag: result.country_flag,
         timeZone: result.time_zone.name,
       };
-    } catch (err) {
-      throw err;
     } finally {
       setIsLoading(false);
     }
