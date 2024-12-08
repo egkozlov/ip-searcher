@@ -21,8 +21,15 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Set API Key as Environment Variable
+        env:
+          REACT_APP_IP_GEOLOCATION_API_KEY: ${{ secrets.GEOLOCATION_API_KEY }}
+        run: echo "REACT_APP_IP_GEOLOCATION_API_KEY=${{ secrets.GEOLOCATION_API_KEY }}" >> $GITHUB_ENV
+
       - name: Build the app
         run: npm run build
+        env:
+          REACT_APP_IP_GEOLOCATION_API_KEY: ${{ secrets.GEOLOCATION_API_KEY }}
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
