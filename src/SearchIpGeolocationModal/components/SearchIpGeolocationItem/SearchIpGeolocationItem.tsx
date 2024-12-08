@@ -3,7 +3,7 @@ import { GeolocationData, useSearchIpGeolocationData } from "./hooks/useSearchIp
 import { validateIp } from "./utils/ip.validation.util";
 import { Clock } from "../Clock";
 import { TextInput, Spinner } from "../../../common";
-import styles from './SearchIpGeolocationItem.module.css';
+import styles from "./SearchIpGeolocationItem.module.css";
 
 export const SearchIpGeolocationItem = () => {
   const [value, setValue] = useState('');

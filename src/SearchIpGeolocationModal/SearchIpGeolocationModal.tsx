@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
-import styles from './SearchIpGeolocationModal.module.css';
-import { ReactComponent as PlusIcon } from '../assets/plus.svg';
-import { Modal, Button } from '../common';
-import { SearchIpGeolocationItem } from './components/SearchIpGeolocationItem';
+import { useEffect, useState } from "react";
+import styles from "./SearchIpGeolocationModal.module.css";
+import { ReactComponent as PlusIcon } from "../assets/plus.svg";
+import { Modal, Button } from "../common";
+import { SearchIpGeolocationItem } from "./components/SearchIpGeolocationItem";
 
 type Props = {
   isOpen: boolean;
