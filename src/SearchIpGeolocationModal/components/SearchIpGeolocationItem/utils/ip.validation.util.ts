@@ -14,7 +14,7 @@ export const validateIp = (ip: string) => {
   }
 
   return {
-    isValid: false
+    isValid: true
   };
 }
 
