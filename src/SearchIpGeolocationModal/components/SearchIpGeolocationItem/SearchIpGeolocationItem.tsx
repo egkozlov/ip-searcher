@@ -12,7 +12,7 @@ export const SearchIpGeolocationItem = () => {
   const [previouslySearchedValue, setPreviouslySearchedValue] = useState<string | null>(null);
   const { isLoading, searchIpGeolocation } = useSearchIpGeolocationData();
 
-  const handleOnChange = (event: any) => {
+  const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
   }
 
