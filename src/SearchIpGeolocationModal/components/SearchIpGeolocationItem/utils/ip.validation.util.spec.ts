@@ -11,7 +11,7 @@ describe('validateIp', () => {
   });
 
   describe('IPv4', () => {
-    describe('valid format', () => {
+    describe('valid forma', () => {
       const validV4Ips = [
         '0.0.0.0',
         '172.26.168.134',
