@@ -30,3 +30,5 @@ To run the **IP Geolocation Finder** app locally:
 ## Demo
 
 Check out the video with the experience or play with the app yourself using the URL https://egkozlov.github.io/ip-searcher/
+
+https://github.com/user-attachments/assets/39643f17-c287-4abf-83ce-58e17d180edb
